@@ -38,13 +38,11 @@ export function Navbar({ forceDark = false }: NavbarProps) {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
-          isDark
-            ? "glass-dark border-b"
-            : "bg-transparent"
+        className={`fixed top-[20px] left-1/2 z-50 w-fit min-w-[320px] max-w-3xl -translate-x-1/2 rounded-full border border-[var(--glass-border)] bg-[var(--glass)] px-4 py-2 shadow-lg backdrop-blur-md transition-all duration-300 md:px-6 md:py-3 ${
+          scrolled ? "navbar-scrolled" : ""
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
+        <div className="flex items-center gap-4 md:gap-8">
           <Link to="/" className="flex items-center gap-2">
             <img
               src="/logio.png"
@@ -171,7 +169,7 @@ export function Navbar({ forceDark = false }: NavbarProps) {
         {/* Mobile sheet */}
         {mobileOpen && (
           <div
-            className="border-t md:hidden"
+            className="absolute left-0 right-0 top-[100%] mt-2 overflow-hidden rounded-2xl border md:hidden"
             style={{
               background: "var(--nav-glass)",
               borderColor: "var(--glass-border)",

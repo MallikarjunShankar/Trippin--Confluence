@@ -278,3 +278,17 @@
 }
 
 html { scroll-behavior: smooth; }
+
+/* Navbar floating island — scrolled state */
+.navbar-scrolled {
+  border-color: rgba(248, 243, 232, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Agent pipeline horizontal scroll row */
+.agent-scroll-row {
+  scrollbar-width: none;
+}
+.agent-scroll-row::-webkit-scrollbar {
+  display: none;
+}

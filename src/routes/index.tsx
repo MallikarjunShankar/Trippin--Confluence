@@ -3,6 +3,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/landing/HeroSection";
+import { USPSection } from "@/components/landing/USPSection";
+import { DemoSection } from "@/components/landing/DemoSection";
+import { AgentPipelineSection } from "@/components/landing/AgentPipelineSection";
 import { AboutSection } from "@/components/landing/AboutSection";
 import { TrendingSection } from "@/components/landing/TrendingSection";
 import { PlansCTASection } from "@/components/landing/PlansCTASection";
@@ -33,6 +36,9 @@ function LandingPage() {
       <Navbar />
       <main>
         <HeroSection />
+        <USPSection />
+        <DemoSection />
+        <AgentPipelineSection />
         <AboutSection />
         <TrendingSection />
         <PlansCTASection />
