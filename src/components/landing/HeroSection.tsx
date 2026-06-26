@@ -41,7 +41,7 @@ export function HeroSection() {
       <section
         ref={sectionRef}
         className="relative flex h-screen w-full items-center justify-center overflow-hidden"
-        style={{ backgroundColor: "var(--dark-bg)" }}
+        style={{ background: "linear-gradient(135deg, var(--dark-bg), color-mix(in srgb, var(--sage) 12%, var(--dark-bg)))" }}
       >
         {/* Layer 1: globe */}
         <div
@@ -109,10 +109,9 @@ export function HeroSection() {
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
             <button
               onClick={handlePrimary}
-              className="rounded-full px-8 py-4 text-sm font-semibold transition-transform hover:scale-[1.02]"
+              className="glass-button rounded-full px-8 py-4 text-sm font-semibold transition-transform hover:scale-[1.02]"
               style={{
-                backgroundColor: "var(--ivory)",
-                color: "var(--charcoal)",
+                color: "var(--text-on-dark)",
                 fontFamily: "Space Grotesk",
                 fontWeight: 600,
               }}
@@ -121,7 +120,7 @@ export function HeroSection() {
             </button>
             <button
               onClick={handleHowItWorks}
-              className="rounded-full border px-8 py-4 text-sm transition-colors hover:bg-white/5"
+              className="glass-button rounded-full px-8 py-4 text-sm transition-all hover:scale-[1.02]"
               style={{
                 borderColor: "rgba(255,255,255,0.3)",
                 color: "rgba(255,255,255,0.8)",

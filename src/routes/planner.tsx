@@ -47,8 +47,7 @@ function PlannerPage() {
     // Minimal skeleton — no spinner.
     return (
       <div
-        className="min-h-screen"
-        style={{ backgroundColor: "var(--ivory)" }}
+        className="app-gradient min-h-screen theme-transition"
       >
         <Navbar />
         <div className="mx-auto max-w-2xl px-6 pt-40">
@@ -66,7 +65,7 @@ function PlannerPage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "var(--ivory)" }}>
+    <div className="app-gradient min-h-screen theme-transition">
       <Navbar />
 
       <main className="mx-auto max-w-2xl px-6 py-24 pt-32">
@@ -103,7 +102,7 @@ function PlannerPage() {
             </p>
             <button
               onClick={resetTrip}
-              className="mt-6 rounded-full border px-6 py-2.5 text-sm transition-colors hover:bg-black/5"
+              className="glass-button mt-6 rounded-full px-6 py-2.5 text-sm transition-all hover:scale-[1.02]"
               style={{
                 borderColor: "var(--sand)",
                 color: "var(--charcoal)",

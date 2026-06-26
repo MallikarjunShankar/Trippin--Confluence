@@ -72,10 +72,9 @@ export function TripInput({
         }}
         onKeyDown={handleKeyDown}
         placeholder="Find flights from Mumbai to Tokyo from 15 October for 7 days."
-        className="mt-8 w-full resize-none rounded-2xl border bg-white p-5 outline-none transition-shadow focus:ring-2"
+        className="glass-input mt-8 w-full resize-none rounded-2xl p-5 outline-none transition-shadow focus:ring-2"
         style={{
           minHeight: 120,
-          borderColor: "var(--sand)",
           fontFamily: "Inter",
           fontWeight: 400,
           fontSize: 16,
@@ -101,9 +100,8 @@ export function TripInput({
               onSentenceChange(ex);
               setShowError(false);
             }}
-            className="shrink-0 rounded-full px-3 py-1.5 text-[13px] transition-colors hover:opacity-80"
+            className="glass-button shrink-0 rounded-full px-3 py-1.5 text-[13px] transition-all hover:scale-[1.02]"
             style={{
-              backgroundColor: "var(--sand)",
               color: "var(--charcoal)",
               fontFamily: "Inter",
             }}
@@ -117,10 +115,9 @@ export function TripInput({
         type="button"
         onClick={handleSubmit}
         disabled={isSubmitting}
-        className="mt-4 w-full rounded-full px-6 py-4 text-sm font-semibold transition-opacity disabled:opacity-60"
+        className="glass-button mt-4 w-full rounded-full px-6 py-4 text-sm font-semibold transition-all hover:scale-[1.01] disabled:opacity-60"
         style={{
-          backgroundColor: "var(--charcoal)",
-          color: "var(--ivory)",
+          color: "var(--charcoal)",
           fontFamily: "Space Grotesk",
           fontWeight: 600,
         }}

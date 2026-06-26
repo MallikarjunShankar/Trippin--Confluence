@@ -3,7 +3,7 @@ export function Footer() {
   return (
     <footer
       className="border-t py-12"
-      style={{ backgroundColor: "#111111", borderColor: "rgba(255,255,255,0.1)" }}
+      style={{ background: "linear-gradient(135deg, var(--dark-bg), #111111)", borderColor: "var(--glass-border)" }}
     >
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 md:flex-row md:justify-between md:px-10">
         <img

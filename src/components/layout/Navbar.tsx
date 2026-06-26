@@ -3,8 +3,9 @@
 
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { LogOut, Menu, X } from "lucide-react";
+import { LogOut, Menu, Moon, Sun, X } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
+import { useTheme } from "@/hooks/useTheme";
 import { LoginModal } from "@/components/auth/LoginModal";
 import { SignupModal } from "@/components/auth/SignupModal";
 
@@ -22,6 +23,7 @@ export function Navbar({ forceDark = false }: NavbarProps) {
   const [signupOpen, setSignupOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { user, signOut } = useAuth();
+  const { isDark: themeIsDark, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,14 +33,14 @@ export function Navbar({ forceDark = false }: NavbarProps) {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const isDark = forceDark || scrolled;
+  const isDark = forceDark || scrolled || themeIsDark;
 
   return (
     <>
       <header
         className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
           isDark
-            ? "bg-[rgba(12,12,12,0.85)] backdrop-blur-md border-b border-white/10"
+            ? "glass-dark border-b"
             : "bg-transparent"
         }`}
       >
@@ -83,28 +85,38 @@ export function Navbar({ forceDark = false }: NavbarProps) {
 
           {/* Right side */}
           <div className="hidden items-center gap-3 md:flex">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="glass-button flex h-10 w-10 items-center justify-center rounded-full transition-all hover:scale-[1.03]"
+              style={{ color: isDark ? "white" : "var(--charcoal)" }}
+              aria-label={themeIsDark ? "Switch to light mode" : "Switch to dark mode"}
+              title={themeIsDark ? "Light mode" : "Dark mode"}
+            >
+              {themeIsDark ? <Sun size={17} /> : <Moon size={17} />}
+            </button>
+
             {user ? (
               <>
                 <button
                   onClick={() => navigate({ to: "/planner" })}
-                  className="rounded-full px-5 py-2 text-sm font-semibold transition-all hover:opacity-90"
-                  style={{ backgroundColor: "var(--sage)", color: "var(--charcoal)" }}
+                  className="glass-button rounded-full px-5 py-2 text-sm font-semibold transition-all hover:scale-[1.02]"
+                  style={{ color: "var(--charcoal)" }}
                 >
                   Plan a trip
                 </button>
                 <div className="relative">
                   <button
                     onClick={() => setMenuOpen((v) => !v)}
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold"
-                    style={{ backgroundColor: "var(--sand)", color: "var(--charcoal)" }}
+                    className="glass-button flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold"
+                    style={{ color: "var(--charcoal)" }}
                     aria-label="Account menu"
                   >
                     {user.email[0]?.toUpperCase() ?? "U"}
                   </button>
                   {menuOpen && (
                     <div
-                      className="absolute right-0 mt-2 w-48 overflow-hidden rounded-2xl border bg-white shadow-md"
-                      style={{ borderColor: "var(--sand)" }}
+                      className="glass-card absolute right-0 mt-2 w-48 overflow-hidden rounded-2xl"
                     >
                       <div className="px-4 py-3 text-xs" style={{ color: "var(--muted-text)" }}>
                         {user.email}
@@ -127,7 +139,7 @@ export function Navbar({ forceDark = false }: NavbarProps) {
               <>
                 <button
                   onClick={() => setLoginOpen(true)}
-                  className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                  className={`glass-button rounded-full px-5 py-2 text-sm font-medium transition-all hover:scale-[1.02] ${
                     isDark ? "text-white/85 hover:bg-white/10" : "hover:bg-black/5"
                   }`}
                   style={{ color: isDark ? undefined : "var(--charcoal)" }}
@@ -136,8 +148,8 @@ export function Navbar({ forceDark = false }: NavbarProps) {
                 </button>
                 <button
                   onClick={() => setSignupOpen(true)}
-                  className="rounded-full px-5 py-2 text-sm font-semibold transition-all hover:opacity-90"
-                  style={{ backgroundColor: "var(--sage)", color: "var(--charcoal)" }}
+                  className="glass-button rounded-full px-5 py-2 text-sm font-semibold transition-all hover:scale-[1.02]"
+                  style={{ color: "var(--charcoal)" }}
                 >
                   Sign up
                 </button>
@@ -147,7 +159,7 @@ export function Navbar({ forceDark = false }: NavbarProps) {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden"
+            className="glass-button flex h-10 w-10 items-center justify-center rounded-full md:hidden"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
             style={{ color: isDark ? "white" : "var(--charcoal)" }}
@@ -161,8 +173,10 @@ export function Navbar({ forceDark = false }: NavbarProps) {
           <div
             className="border-t md:hidden"
             style={{
-              backgroundColor: isDark ? "rgba(12,12,12,0.95)" : "var(--ivory)",
-              borderColor: isDark ? "rgba(255,255,255,0.1)" : "var(--sand)",
+              background: "var(--nav-glass)",
+              borderColor: "var(--glass-border)",
+              backdropFilter: "blur(18px)",
+              WebkitBackdropFilter: "blur(18px)",
             }}
           >
             <div className="flex flex-col gap-3 px-6 py-5">
@@ -177,6 +191,15 @@ export function Navbar({ forceDark = false }: NavbarProps) {
                   {id}
                 </a>
               ))}
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="glass-button flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm"
+                style={{ color: isDark ? "white" : "var(--charcoal)" }}
+              >
+                {themeIsDark ? <Sun size={15} /> : <Moon size={15} />}
+                {themeIsDark ? "Light mode" : "Dark mode"}
+              </button>
               <div className="mt-3 flex flex-col gap-2">
                 {user ? (
                   <button
@@ -184,8 +207,8 @@ export function Navbar({ forceDark = false }: NavbarProps) {
                       setMobileOpen(false);
                       navigate({ to: "/planner" });
                     }}
-                    className="rounded-full px-5 py-2 text-sm font-semibold"
-                    style={{ backgroundColor: "var(--sage)", color: "var(--charcoal)" }}
+                    className="glass-button rounded-full px-5 py-2 text-sm font-semibold"
+                    style={{ color: "var(--charcoal)" }}
                   >
                     Plan a trip
                   </button>
@@ -196,7 +219,7 @@ export function Navbar({ forceDark = false }: NavbarProps) {
                         setMobileOpen(false);
                         setLoginOpen(true);
                       }}
-                      className="rounded-full border px-5 py-2 text-sm"
+                      className="glass-button rounded-full px-5 py-2 text-sm"
                       style={{
                         borderColor: isDark ? "rgba(255,255,255,0.2)" : "var(--sand)",
                         color: isDark ? "white" : "var(--charcoal)",
@@ -209,8 +232,8 @@ export function Navbar({ forceDark = false }: NavbarProps) {
                         setMobileOpen(false);
                         setSignupOpen(true);
                       }}
-                      className="rounded-full px-5 py-2 text-sm font-semibold"
-                      style={{ backgroundColor: "var(--sage)", color: "var(--charcoal)" }}
+                      className="glass-button rounded-full px-5 py-2 text-sm font-semibold"
+                      style={{ color: "var(--charcoal)" }}
                     >
                       Sign up
                     </button>

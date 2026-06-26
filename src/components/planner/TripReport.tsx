@@ -78,8 +78,7 @@ function EmptyState({ children }: { children: string }) {
 function FlightCard({ flight }: { flight: FlightOption }) {
   return (
     <div
-      className="rounded-2xl border bg-white p-5"
-      style={{ borderColor: "var(--sand)" }}
+      className="glass-card rounded-2xl p-5"
     >
       <div className="flex items-start justify-between gap-4">
         <div>
@@ -142,8 +141,7 @@ function FlightCard({ flight }: { flight: FlightOption }) {
 function HotelCard({ hotel }: { hotel: HotelOption }) {
   return (
     <div
-      className="rounded-2xl border bg-white p-5"
-      style={{ borderColor: "var(--sand)" }}
+      className="glass-card rounded-2xl p-5"
     >
       <div className="flex items-start justify-between gap-4">
         <div>
@@ -196,8 +194,7 @@ function HotelCard({ hotel }: { hotel: HotelOption }) {
 function WeatherDayCard({ day }: { day: WeatherDay }) {
   return (
     <div
-      className="min-w-[100px] shrink-0 rounded-xl p-3 text-center"
-      style={{ backgroundColor: "var(--sand)" }}
+      className="glass-card min-w-[100px] shrink-0 rounded-xl p-3 text-center"
     >
       <p
         style={{
@@ -420,7 +417,7 @@ export function TripReport({ report, onReset }: TripReportProps) {
       <div className="mt-10 flex flex-wrap items-center gap-3">
         <button
           onClick={onReset}
-          className="rounded-full border px-5 py-2.5 text-sm transition-colors hover:bg-black/5"
+          className="glass-button rounded-full px-5 py-2.5 text-sm transition-all hover:scale-[1.02]"
           style={{
             borderColor: "var(--sand)",
             color: "var(--charcoal)",
@@ -432,7 +429,7 @@ export function TripReport({ report, onReset }: TripReportProps) {
         </button>
         <button
           onClick={copyLink}
-          className="rounded-full border px-5 py-2.5 text-sm transition-colors hover:bg-black/5"
+          className="glass-button rounded-full px-5 py-2.5 text-sm transition-all hover:scale-[1.02]"
           style={{
             borderColor: "var(--sand)",
             color: "var(--charcoal)",

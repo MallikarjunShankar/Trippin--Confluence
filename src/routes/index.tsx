@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
 
 function LandingPage() {
   return (
-    <div style={{ backgroundColor: "var(--ivory)" }}>
+    <div className="app-gradient theme-transition">
       <Navbar />
       <main>
         <HeroSection />

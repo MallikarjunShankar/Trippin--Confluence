@@ -11,8 +11,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="w-full py-32"
-      style={{ backgroundColor: "var(--ivory)" }}
+      className="section-glass w-full py-32 theme-transition"
     >
       <div className="mx-auto max-w-3xl px-6 text-center">
         <motion.div

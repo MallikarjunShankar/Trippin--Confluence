@@ -1,3 +1,13 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
 # Logs
 logs
 *.log
@@ -7,18 +17,34 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-.output
-.vinxi
-.tanstack/**
-.nitro
+# Build output and framework caches
+dist/
+dist-ssr/
+.output/
+.vinxi/
+.tanstack/
+.nitro/
+.vite/
+vite-env.d.ts
 *.local
+
+# Test and coverage output
+coverage/
+test-results/
+playwright-report/
 
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
+
+# Deployment and hosting caches
+.vercel/
+.netlify/
+
+# Package manager caches
+.npm/
+.yarn/
+.pnpm-store/
 
 # Editor directories and files
 .vscode/*

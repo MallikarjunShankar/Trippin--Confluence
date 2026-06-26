@@ -54,8 +54,7 @@ export function AuthForm({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className="rounded-2xl border-0 p-0 sm:max-w-md"
-        style={{ backgroundColor: "var(--ivory)" }}
+        className="glass-card rounded-2xl border p-0 sm:max-w-md"
       >
         <div className="p-8">
           <DialogHeader className="space-y-2 text-left">
@@ -81,8 +80,7 @@ export function AuthForm({
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-2xl border bg-white px-4 py-3 text-sm outline-none transition-shadow focus:ring-2"
-                style={{ borderColor: "var(--sand)" }}
+                className="glass-input w-full rounded-2xl px-4 py-3 text-sm outline-none transition-shadow focus:ring-2"
               />
             </div>
             <div className="space-y-1.5">
@@ -96,8 +94,7 @@ export function AuthForm({
                 minLength={6}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-2xl border bg-white px-4 py-3 text-sm outline-none transition-shadow focus:ring-2"
-                style={{ borderColor: "var(--sand)" }}
+                className="glass-input w-full rounded-2xl px-4 py-3 text-sm outline-none transition-shadow focus:ring-2"
               />
             </div>
 
@@ -110,10 +107,9 @@ export function AuthForm({
             <button
               type="submit"
               disabled={busy}
-              className="w-full rounded-full px-6 py-3 text-sm font-semibold transition-opacity disabled:opacity-60"
+              className="glass-button w-full rounded-full px-6 py-3 text-sm font-semibold transition-all hover:scale-[1.01] disabled:opacity-60"
               style={{
-                backgroundColor: "var(--charcoal)",
-                color: "var(--ivory)",
+                color: "var(--charcoal)",
                 fontFamily: "Space Grotesk",
               }}
             >

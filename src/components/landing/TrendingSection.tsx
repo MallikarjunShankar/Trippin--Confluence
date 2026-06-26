@@ -50,8 +50,7 @@ export function TrendingSection() {
   return (
     <section
       id="destinations"
-      className="w-full py-24"
-      style={{ backgroundColor: "var(--sand)" }}
+      className="section-glass-alt w-full py-24 theme-transition"
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="text-center">
@@ -141,7 +140,7 @@ export function TrendingSection() {
               </p>
               <button
                 onClick={handlePlan}
-                className="mt-5 text-sm font-medium underline-offset-4 hover:underline"
+                className="glass-button mt-5 rounded-full px-4 py-2 text-sm font-medium transition-all hover:scale-[1.02]"
                 style={{ color: "var(--charcoal)", fontFamily: "Inter" }}
               >
                 Plan this trip

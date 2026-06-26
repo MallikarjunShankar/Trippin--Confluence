@@ -19,8 +19,8 @@ export function PlansCTASection() {
   return (
     <section
       id="plans"
-      className="w-full py-20"
-      style={{ backgroundColor: "var(--dark-bg)" }}
+      className="w-full py-20 theme-transition"
+      style={{ background: "linear-gradient(135deg, var(--dark-bg), color-mix(in srgb, var(--sage) 16%, var(--dark-bg)))" }}
     >
       <div className="mx-auto max-w-3xl px-6 text-center">
         <p className="label-eyebrow" style={{ color: "var(--sage)" }}>
@@ -52,10 +52,9 @@ export function PlansCTASection() {
         </p>
         <button
           onClick={handleStart}
-          className="mt-10 rounded-full px-8 py-4 text-sm font-semibold transition-transform hover:scale-[1.02]"
+          className="glass-button mt-10 rounded-full px-8 py-4 text-sm font-semibold transition-transform hover:scale-[1.02]"
           style={{
-            backgroundColor: "var(--ivory)",
-            color: "var(--charcoal)",
+            color: "var(--text-on-dark)",
             fontFamily: "Space Grotesk",
             fontWeight: 600,
           }}
