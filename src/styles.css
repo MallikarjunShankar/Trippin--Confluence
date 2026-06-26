@@ -1,0 +1,169 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "@fontsource/space-grotesk/300.css";
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Trippin' design system.
+ * Warm ivory base, deep charcoal text, sage / sky / sand accents.
+ * NO blue as primary. NO loud gradients. Pill buttons, rounded-2xl cards.
+ */
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Trippin' brand tokens */
+  --color-ivory: var(--ivory);
+  --color-charcoal: var(--charcoal);
+  --color-sand: var(--sand);
+  --color-sage: var(--sage);
+  --color-sky: var(--sky);
+  --color-dark-bg: var(--dark-bg);
+  --color-muted-text: var(--muted-text);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Brand palette — sRGB hex mapped via oklch-compatible token names */
+  --ivory: #F8F3E8;
+  --charcoal: #111111;
+  --sand: #E9DFC9;
+  --sage: #B8C6B1;
+  --sky: #D8E7F2;
+  --dark-bg: #0C0C0C;
+  --muted-text: #6B6B6B;
+  --glass: rgba(248, 243, 232, 0.12);
+  --glass-border: rgba(248, 243, 232, 0.2);
+
+  /* Shadcn semantic — re-mapped onto brand */
+  --background: #F8F3E8;
+  --foreground: #111111;
+  --card: #FFFFFF;
+  --card-foreground: #111111;
+  --popover: #FFFFFF;
+  --popover-foreground: #111111;
+  --primary: #111111;
+  --primary-foreground: #F8F3E8;
+  --secondary: #E9DFC9;
+  --secondary-foreground: #111111;
+  --muted: #E9DFC9;
+  --muted-foreground: #6B6B6B;
+  --accent: #B8C6B1;
+  --accent-foreground: #111111;
+  --destructive: #C0392B;
+  --destructive-foreground: #FFFFFF;
+  --border: #E9DFC9;
+  --input: #E9DFC9;
+  --ring: #B8C6B1;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html, body {
+    background-color: var(--ivory);
+    color: var(--charcoal);
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--sage);
+    color: var(--charcoal);
+  }
+}
+
+/* Reusable utility classes for brand surfaces */
+@utility label-eyebrow {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sage);
+}
+
+@utility font-display {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+@utility glass-card {
+  background-color: rgba(248, 243, 232, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+@utility glass-dark {
+  background-color: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Scroll-indicator pulse used by HeroSection */
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50%      { opacity: 1;   transform: translateY(6px); }
+}
+
+.scroll-indicator {
+  animation: scroll-pulse 2s ease-in-out infinite;
+}
+
+/* Respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .scroll-indicator { animation: none; }
+}
+
+html { scroll-behavior: smooth; }
