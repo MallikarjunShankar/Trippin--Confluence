@@ -14,7 +14,7 @@ export interface FlightOption {
   airline: string;
   flightNumber: string;
   departure: string; // ISO datetime
-  arrival: string;   // ISO datetime
+  arrival: string; // ISO datetime
   origin: string;
   destination: string;
   durationMinutes: number;
@@ -48,24 +48,13 @@ export interface ItineraryDay {
 }
 
 export interface TripReport {
-  query: string;
-  origin: string;
+  success: boolean;
+  report: string;
+  itinerary: string;
   destination: string;
-  date: string;
-  returnDate?: string;
-  travelers?: number;
-  flights: FlightOption[];
-  hotels: HotelOption[];
-  weather: WeatherDay[];
-  itinerary: ItineraryDay[];
-  budgetSummaryINR?: number;
-  notes?: string;
-  errors?: string[];
+  eventDate: string;
+  /** @deprecated kept for TripLoadingScene backward compat */
+  origin?: string;
 }
 
-export type TripUIState =
-  | "idle"
-  | "submitting"
-  | "loading_animation"
-  | "result_ready"
-  | "error";
+export type TripUIState = "idle" | "submitting" | "loading_animation" | "result_ready" | "error";
