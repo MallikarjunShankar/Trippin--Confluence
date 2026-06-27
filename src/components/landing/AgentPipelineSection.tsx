@@ -23,7 +23,10 @@ export function AgentPipelineSection() {
   ];
 
   return (
-    <section className="w-full bg-[var(--color-dark-bg)] py-24">
+    <section
+      style={{ backgroundColor: "#0C0C0C" }}
+      className="w-full py-24"
+    >
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -41,31 +44,42 @@ export function AgentPipelineSection() {
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="agent-scroll-row mt-12 flex flex-row overflow-x-auto px-6 pb-8"
+        className="agent-scroll-row mt-12"
         style={{
+          display: "flex",
+          flexDirection: "row",
+          overflowX: "auto",
           gap: "20px",
+          paddingLeft: "24px",
+          paddingRight: "24px",
+          paddingBottom: "32px",
+          width: "100%",
           scrollSnapType: "x mandatory",
           WebkitOverflowScrolling: "touch",
         }}
       >
-        {agents.map(({ num, name, desc, Icon }, i) => (
+        {agents.map((agent) => (
           <motion.div
-            key={i}
-            whileHover={{ y: -6, borderColor: "rgba(184,198,177,0.35)" }}
+            key={agent.name}
+            whileHover={{ y: -6 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="h-auto shrink-0 snap-start rounded-2xl border border-white/10 bg-white/[0.04] p-6"
-            style={{ minWidth: "260px", borderColor: "rgba(255,255,255,0.1)" }}
+            style={{
+              minWidth: "260px",
+              flexShrink: 0,
+              scrollSnapAlign: "start",
+            }}
+            className="bg-white/[0.04] border border-white/10 rounded-2xl p-6 cursor-default"
           >
             <div className="flex items-center justify-between">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
-                <Icon size={18} color="white" />
+                <agent.Icon size={18} color="white" />
               </div>
-              <span className="font-mono text-sm text-white/30">{num}</span>
+              <span className="font-mono text-sm text-white/30">{agent.num}</span>
             </div>
 
             <div className="mt-10">
-              <h3 className="font-display text-xl font-bold text-white">{name}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/55">{desc}</p>
+              <h3 className="font-display text-xl font-bold text-white">{agent.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/55">{agent.desc}</p>
             </div>
 
             <div className="mt-6 h-0.5 w-8 bg-[var(--color-sage)]"></div>

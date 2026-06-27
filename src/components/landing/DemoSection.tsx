@@ -43,7 +43,10 @@ export function DemoSection() {
   ];
 
   return (
-    <section className="w-full bg-[var(--color-dark-bg)] px-6 py-24">
+    <section
+      style={{ backgroundColor: "#0C0C0C" }}
+      className="w-full px-6 py-24"
+    >
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

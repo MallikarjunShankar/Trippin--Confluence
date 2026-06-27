@@ -46,36 +46,26 @@ export function TripLoadingScene({ origin, destination }: TripLoadingSceneProps)
         <svg viewBox="0 0 600 120" className="mt-3 w-full" aria-hidden="true">
           <defs>
             <path
-              id="arcPath"
+              id="flight-arc-path"
               d="M 20 100 Q 300 -20 580 100"
               fill="none"
-              stroke="rgba(184,198,177,0.4)"
+              stroke="rgba(255,255,255,0.25)"
               strokeWidth="1.5"
-              strokeDasharray="4 6"
+              strokeDasharray="6 4"
             />
           </defs>
-          <use href="#arcPath" />
+          <use href="#flight-arc-path" />
           <circle cx="20" cy="100" r="4" fill="#B8C6B1" />
           <circle cx="580" cy="100" r="4" fill="#B8C6B1" />
-          <g style={{ color: "white" }}>
-            <foreignObject width="32" height="32" x="-16" y="-16">
-              <div
-                style={{
-                  width: 32,
-                  height: 32,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  transform: "rotate(45deg)",
-                  color: "white",
-                }}
-              >
-                <Plane size={22} />
-              </div>
-              <animateMotion dur="3s" repeatCount="indefinite" rotate="auto">
-                <mpath href="#arcPath" />
-              </animateMotion>
-            </foreignObject>
+          <g>
+            <path
+              d="M0,-6 L4,2 L0,0 L-4,2 Z"
+              fill="white"
+              transform="rotate(90) scale(2)"
+            />
+            <animateMotion dur="3s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#flight-arc-path" />
+            </animateMotion>
           </g>
         </svg>
       </div>
